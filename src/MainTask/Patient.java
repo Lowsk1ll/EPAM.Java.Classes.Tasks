@@ -104,23 +104,23 @@ public class Patient {
     }
 
     public static ArrayList<Patient> getPatientListWithSameDiagnosis(String diagnosis, ArrayList<Patient> patientsList) {
-        ArrayList<Patient> PatientListWithSameDiagnosis = new ArrayList<>();
+        ArrayList<Patient> patientListWithSameDiagnosis = new ArrayList<>();
         for (Patient patient : patientsList) {
             if (patient.getDiagnosis().contains(diagnosis)) {
-                PatientListWithSameDiagnosis.add(patient);
+                addPatient(patient,patientListWithSameDiagnosis);
             }
         }
-        return PatientListWithSameDiagnosis;
+        return patientListWithSameDiagnosis;
     }
 
-    public static ArrayList<Patient> getPatientListAtRange(BigInteger LeftBorder, BigInteger RightBorder, ArrayList<Patient> patientsList) {
-        ArrayList<Patient> PatientListAtRange = new ArrayList<>();
+    public static ArrayList<Patient> getPatientListWithSameMedCardNumberRange(BigInteger LeftBorder, BigInteger RightBorder, ArrayList<Patient> patientsList) {
+        ArrayList<Patient> patientListWithSameMedCardNumberRange = new ArrayList<>();
         for (Patient patient : patientsList) {
             if (patient.getMedCardNumber().compareTo(LeftBorder) > 0 && patient.getMedCardNumber().compareTo(RightBorder) < 0) {
-                PatientListAtRange.add(patient);
+                addPatient(patient,patientListWithSameMedCardNumberRange);
             }
         }
-        return PatientListAtRange;
+        return patientListWithSameMedCardNumberRange;
     }
 
     public static void main(String[] args) {
@@ -143,8 +143,8 @@ public class Patient {
         BigInteger leftBorder = BigInteger.valueOf(2147483640);
         BigInteger rightBorder = BigInteger.valueOf(2147483644);
         System.out.println("\nСписок пациентов имеющих номер мед карты в диапозоне ("+ leftBorder+ ";"+ rightBorder+")");
-        ArrayList<Patient> patientsAtRange = Patient.getPatientListAtRange(leftBorder,rightBorder,patients);
-        for (Patient patient:patientsAtRange) {
+        ArrayList<Patient> patientsListWithSameMedCardNumberRange = Patient.getPatientListWithSameMedCardNumberRange(leftBorder,rightBorder,patients);
+        for (Patient patient:patientsListWithSameMedCardNumberRange) {
             System.out.println(patient.toString());
 
         }
