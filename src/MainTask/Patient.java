@@ -4,18 +4,18 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Patient {
-    private BigInteger id;
+    private long id;
     private String surname;
     private String name;
     private String middlename;
     private String adress;
-    private BigInteger medCardNumber;
+    private long medCardNumber;
     private String diagnosis;
 
     public Patient() {
     }
 
-    public Patient(BigInteger id, String surname, String name, String middlename, String adress, BigInteger medCardNumber, String diagnosis) {
+    public Patient(long id, String surname, String name, String middlename, String adress, long medCardNumber, String diagnosis) {
         this.id = id;
         this.surname = surname;
         this.name = name;
@@ -25,11 +25,11 @@ public class Patient {
         this.diagnosis = diagnosis;
     }
 
-    public BigInteger getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -65,11 +65,11 @@ public class Patient {
         this.adress = adress;
     }
 
-    public BigInteger getMedCardNumber() {
+    public long getMedCardNumber() {
         return medCardNumber;
     }
 
-    public void setMedCardNumber(BigInteger medCardNumber) {
+    public void setMedCardNumber(long medCardNumber) {
         this.medCardNumber = medCardNumber;
     }
 
@@ -113,10 +113,10 @@ public class Patient {
         return patientListWithSameDiagnosis;
     }
 
-    public static ArrayList<Patient> getPatientListWithSameMedCardNumberRange(BigInteger LeftBorder, BigInteger RightBorder, ArrayList<Patient> patientsList) {
+    public static ArrayList<Patient> getPatientListWithSameMedCardNumberRange(long LeftBorder, long RightBorder, ArrayList<Patient> patientsList) {
         ArrayList<Patient> patientListWithSameMedCardNumberRange = new ArrayList<>();
         for (Patient patient : patientsList) {
-            if (patient.getMedCardNumber().compareTo(LeftBorder) > 0 && patient.getMedCardNumber().compareTo(RightBorder) < 0) {
+            if (patient.getMedCardNumber()>LeftBorder && patient.getMedCardNumber()<RightBorder) {
                 addPatient(patient,patientListWithSameMedCardNumberRange);
             }
         }
